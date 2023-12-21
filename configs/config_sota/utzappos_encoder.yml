@@ -1,0 +1,53 @@
+experiment:
+  name: cape/utzappos
+dataset:
+  data_dir: /netscratch/mkhan/zero_shot/datasets/ut-zap50k/
+  splitname: compositional-split-natural
+  open_world: false
+model_params:
+  model: cape
+  composition: true
+  dropout: true
+  norm: true
+  zsl: false
+  nlayers:
+  fc_emb: 768,1024,1200
+  gr_emb: d4096,d
+  learn_emb: true
+  single_dualencoder: false
+  image_embedder: false
+  emb_dim: 512
+  emb_init: ft+w2v
+  graph_init: null
+  eval_type: otherdist
+  project_features: false
+  image_extractor_type: resnet18
+  image_extractor: resnet18
+  self_atten: true
+  train_only: true
+  static_inp: false
+gcnii:
+  hidden_dim: 1024
+  gcn_type: gcn
+  gcn_nlayers: 10
+training:
+  batch_size: 30
+  eval_val_every: 2
+  load:
+  lr: 5.0e-05
+  wd: 5.0e-05
+  lrg: 5.0e-06
+  margin: 2
+  margin: 0.4
+  cosine_scale: 100
+  max_epochs: 120
+  norm_family: imagenet
+  save_every: 10000
+  test_batch_size: 32
+  test_set: val
+  topk: 1
+  random_crop: true
+  workers: 3
+  feature_dim: 512
+  update_features: true
+  freeze_featues: false
